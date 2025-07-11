@@ -1,6 +1,183 @@
 @import url(fonts.css);
 
-body{
-    font-family: "poppins";
-    font-weight: bold;
+/* ### Primary
+
+- Red: hsl(0, 78%, 62%)
+- Cyan: hsl(180, 62%, 55%)
+- Orange: hsl(34, 97%, 64%)
+- Blue: hsl(212, 86%, 64%)
+
+### Neutral
+
+- Grey 500: hsl(234, 12%, 34%)
+- Grey 400: hsl(212, 6%, 44%)
+- White: hsl(0, 0%, 100%)
+
+## Typography
+
+### Body Copy
+
+- Font size: 15px
+
+### Fonts
+
+- Family: [Poppins](https://fonts.google.com/specimen/Poppins)
+- Weights: 200, 400, 600 */
+
+/* || CSS RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+/* || GENERAL STYLES */
+
+:root {
+  /* COLORS */
+  --red: hsl(0, 78%, 62%);
+  --cyan: hsl(180, 62%, 55%);
+  --orange: hsl(34, 97%, 64%);
+  --blue: hsl(212, 86%, 64%);
+  --grey-500: hsl(234, 12%, 34%);
+  --grey-400: hsl(212, 6%, 44%);
+  --font-family:"poppins";
+  --font-size-lg:clamp(1.5rem, calc(1.5rem + 0.02 * (100vw - 360px)),2.3rem);
+  --font-size-sm:14px;
+}
+body {
+  font-family: var(--font-family);
+  font-size:var(--font-size-sm);
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  min-height:100vh;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+/* || HEADER */
+
+.header{
+    
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding-top: 2.5rem;
+    margin-bottom: 3.2rem;
+    max-width: 550px;
+
+}
+
+.header h1{
+    font-size: var(--font-size-lg);
+    color:var(--grey-500);
+    font-weight: 600;
+}
+
+.header span{
+    font-weight: 200;
+}
+
+.header p{
+    color: var(--grey-400);
+    padding: 0 1rem;
+}
+
+/* || MAIN */
+.main{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+    grid-template-rows: repeat(4, 250px);
+    gap: 2rem;
+    width: 100%;
+
+}
+
+.card{
+    min-height: 250px;
+    padding: 1.8rem 1.8rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    justify-content: flex-start;
+}
+
+
+.card h2{
+
+    color: var(--grey-500);
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+
+}
+
+.card p{
+    font-size: var(--font-size-sm);
+    color:var(--grey-400);
+}
+.card .img{
+    align-self:flex-end;
+    flex-grow:1;
+    display: flex;
+    flex-direction: column-reverse;
+
+}
+.card img{
+    width: 64px;
+    height: auto;
+    
+    
+}
+
+.supervisor{
+    border-top: 10px solid var(--cyan);
+}
+.team{
+    border-top: 10px solid var(--red);
+}
+.karma{
+    border-top: 10px solid var(--orange);
+}
+.calculator{
+    border-top: 10px solid var(--blue);
+}
+
+@media screen and (min-width: 700px) and (max-width:1000px){
+    .main{
+        grid-template-rows: repeat(2, 250px);
+    }
+    body{
+        padding-top: 10vh;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    body{
+        padding-top: 4.5rem;
+    }
+    .main{
+            grid-template-rows: repeat(2, 250px);
+        grid-template-areas: "sup team calc"
+                            "sup karm calc";
+                            align-items: center;
+    }
+    .supervisor{
+        grid-area: sup;
+    }
+    .team{
+        grid-area: team;
+    }
+    .karma{
+        grid-area: karm;
+    }
+    .calculator{
+        grid-area: calc;
+    }
 }
